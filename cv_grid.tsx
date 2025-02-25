@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Mail, Calendar, Flag, Car, GraduationCap, BookOpen, Star, Briefcase } from "lucide-react"
 
-export default function CV() {
+export default function CvGrid() {
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8 lg:p-12">
       <Card className="mx-auto max-w-6xl">

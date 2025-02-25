@@ -21,7 +21,7 @@ import {
   LinkedinIcon,
 } from "lucide-react"
 
-export default function CV() {
+export default function CvSidebar() {
   const [theme, setTheme] = React.useState("light")
 
   const toggleTheme = () => {
