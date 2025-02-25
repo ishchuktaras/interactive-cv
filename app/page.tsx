@@ -1,9 +1,13 @@
-import CV from "@/components/cv"
+import CvSidebar from "../cv_sidebar"
+import CvGrid from "../cv_grid"
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900">
-      <CV />
+    <main className="min-h-screen bg-gray-50">
+      <div className="container mx-auto py-8">
+        <CvSidebar />
+        <CvGrid />
+      </div>
     </main>
   )
 }
