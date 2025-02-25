@@ -83,7 +83,7 @@ export const translations = {
         title: "Jazyky",
         items: [
           { lang: "Čeština", level: "Pokročilý", value: 80 },
-          { lang: "Angličtina", level: "Pokročilý", value: 75 },
+          { lang: "Angličtina", level: "Pokročilý", value: 60 },
           { lang: "Ruština", level: "Rodilý mluvčí", value: 100 },
           { lang: "Ukrajinština", level: "Rodilý mluvčí", value: 100 },
         ],
@@ -184,7 +184,7 @@ export const translations = {
         title: "Languages",
         items: [
           { lang: "Czech", level: "Advanced", value: 80 },
-          { lang: "English", level: "Advanced", value: 75 },
+          { lang: "English", level: "Advanced", value: 60 },
           { lang: "Russian", level: "Native", value: 100 },
           { lang: "Ukrainian", level: "Native", value: 100 },
         ],

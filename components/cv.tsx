@@ -38,9 +38,9 @@ export default function CV() {
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8 lg:p-12">
-      <Card className="mx-auto max-w-6xl bg-background shadow-xl">
-        <CardContent className="p-6">
+    <div className="min-h-screen p-4 md:p-8 lg:p-4">
+      <Card className="mx-auto max-w-12xl bg-background shadow-xl">
+        <CardContent className="p-2 md:p-8 lg:p-4">
           {/* Header with Theme Toggle, Language and Download */}
           <div className="mb-6 flex justify-end gap-2">
             <div className="flex gap-2 mr-auto">
@@ -119,8 +119,8 @@ export default function CV() {
           </div>
 
           {/* Main Content Tabs */}
-          <Tabs defaultValue="profile" className="space-y-4">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 bg-purple-100 dark:bg-purple-900">
+          <Tabs defaultValue="profile" className="space-y-28">
+            <TabsList className="grid w-full grid-cols-1 lg:grid-cols-4 bg-purple-100 dark:bg-purple-900">
               <TabsTrigger value="profile" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">
                 {t.tabs.profile}
               </TabsTrigger>
@@ -317,9 +317,9 @@ export default function CV() {
                       <h3 className="mb-4 font-medium">Frontend</h3>
                       <div className="space-y-4">
                         {[
-                          { skill: "JavaScript/TypeScript", level: 90 },
-                          { skill: "React.js", level: 85 },
-                          { skill: "Next.js", level: 80 },
+                          { skill: "JavaScript/TypeScript", level: 70 },
+                          { skill: "React.js", level: 70 },
+                          { skill: "Next.js", level: 70 },
                           { skill: "HTML/CSS", level: 90 },
                         ].map((item) => (
                           <div key={item.skill} className="space-y-2">
@@ -343,10 +343,10 @@ export default function CV() {
                       <h3 className="mb-4 font-medium">Backend & {t.sections.technicalSkills.database}</h3>
                       <div className="space-y-4">
                         {[
-                          { skill: "Node.js", level: 75 },
-                          { skill: "PostgreSQL", level: 70 },
-                          { skill: "Prisma", level: 65 },
-                          { skill: "REST API", level: 80 },
+                          { skill: "Node.js", level: 60 },
+                          { skill: "PostgreSQL", level: 60 },
+                          { skill: "Prisma", level: 50 },
+                          { skill: "REST API", level: 50 },
                         ].map((item) => (
                           <div key={item.skill} className="space-y-2">
                             <div className="flex justify-between text-sm">
