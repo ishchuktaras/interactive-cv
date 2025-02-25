@@ -36,14 +36,6 @@ export default function CV() {
   const toggleLanguage = (lang: "cs" | "en") => {
     setLanguage(lang)
   }
-  const handleDownload = () => {
-    const link = document.createElement("a")
-    link.href = "/cv.pdf" // Nahraď skutečnou cestou k souboru
-    link.download = "Taras_Ishchuk_CV.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
 
   return (
     <div className="min-h-screen p-4 md:p-8 lg:p-12">
@@ -72,7 +64,7 @@ export default function CV() {
             <Button variant="outline" size="icon" onClick={toggleTheme}>
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </Button>
-            <Button variant="outline" onClick={handleDownload} size="icon">
+            <Button variant="outline" size="icon">
               <Download className="h-4 w-4" />
             </Button>
           </div>
@@ -338,6 +330,7 @@ export default function CV() {
                             <Progress
                               value={item.level}
                               className="h-2 bg-purple-200 dark:bg-purple-950"
+                              indicatorClassName="bg-purple-600"
                             />
                           </div>
                         ))}
@@ -363,6 +356,7 @@ export default function CV() {
                             <Progress
                               value={item.level}
                               className="h-2 bg-purple-200 dark:bg-purple-950"
+                              indicatorClassName="bg-purple-600"
                             />
                           </div>
                         ))}
@@ -388,6 +382,7 @@ export default function CV() {
                           <Progress
                             value={item.value}
                             className="h-2 bg-purple-200 dark:bg-purple-950"
+                            indicatorClassName="bg-purple-600"
                           />
                         </div>
                       ))}

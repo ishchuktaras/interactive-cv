@@ -14,6 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://interactive-cv-rho.vercel.app/'), // Změň na skutečnou doménu
   title: "My Interactive CV",
   description: "An interactive CV showcasing my skills, experiences, and projects.",
   keywords: "CV, resume, web developer, JavaScript, Next.js, TypeScript, LinkedIn, GitHub, portfolio",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     title: "My Interactive CV",
     description: "An interactive CV showcasing my skills, experiences, and projects.",
     url: "https://yourwebsite.com", // Replace with your actual URL
-    siteName: "Your Name's CV",
+    siteName: "Taras Ishchuk CV",
     images: [
       {
         url: "https://yourwebsite.com/path/to/your-image.jpg", // Replace with an actual image URL
