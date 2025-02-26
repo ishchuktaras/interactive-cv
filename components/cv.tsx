@@ -24,7 +24,7 @@ import { translations } from '@/lib/translations'
 
 export default function CV() {
   const [theme, setTheme] = React.useState('light')
-  const [language, setLanguage] = React.useState<'cs' | 'en'>('cs')
+  const [language, setLanguage] = React.useState<'cs' | 'en' | 'ua'>('cs')
   const t = translations[language]
 
   const toggleTheme = () => {
@@ -33,7 +33,7 @@ export default function CV() {
     document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
-  const toggleLanguage = (lang: 'cs' | 'en') => {
+  const toggleLanguage = (lang: 'cs' | 'en' | 'ua') => {
     setLanguage(lang)
   }
 
@@ -69,11 +69,23 @@ export default function CV() {
               >
                 <span className="mr-1">🇬🇧</span>
               </Button>
+              <Button
+                variant={language === 'ua' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => toggleLanguage('ua')}
+                className={language === 'ua' ? 'bg-purple-600 hover:bg-purple-700' : ''}
+              >
+                <span className="mr-1">🇺🇦</span>
+              </Button>
             </div>
             <Button variant="outline" size="icon" onClick={toggleTheme}>
               {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </Button>
-            <Button onClick={handleDownload} size="sm" className="bg-purple-600 hover:bg-purple-700">
+            <Button
+              onClick={handleDownload}
+              size="sm"
+              className="bg-purple-600 hover:bg-purple-700"
+            >
               <Download className="mr-2" />
               {t.download}
             </Button>
