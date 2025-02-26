@@ -99,6 +99,7 @@ export const translations = {
         ],
       },
     },
+    download: 'Stáhnout',
   },
   en: {
     tabs: {
@@ -200,6 +201,7 @@ export const translations = {
         ],
       },
     },
+    download: 'Download',
   },
 }
 

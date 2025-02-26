@@ -75,7 +75,7 @@ export default function CV() {
             </Button>
             <Button onClick={handleDownload} className="bg-blue-600 hover:bg-blue-700">
               <Download className="mr-2" />
-              Download CV
+              {t.download}
             </Button>
           </div>
 
