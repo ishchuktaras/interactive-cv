@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import * as React from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Mail,
   GraduationCap,
@@ -19,22 +19,31 @@ import {
   Phone,
   Github,
   LinkedinIcon,
-} from "lucide-react"
-import { translations } from "@/lib/translations"
+} from 'lucide-react'
+import { translations } from '@/lib/translations'
 
 export default function CV() {
-  const [theme, setTheme] = React.useState("light")
-  const [language, setLanguage] = React.useState<"cs" | "en">("cs")
+  const [theme, setTheme] = React.useState('light')
+  const [language, setLanguage] = React.useState<'cs' | 'en'>('cs')
   const t = translations[language]
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light"
+    const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
-    document.documentElement.classList.toggle("dark", newTheme === "dark")
+    document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
-  const toggleLanguage = (lang: "cs" | "en") => {
+  const toggleLanguage = (lang: 'cs' | 'en') => {
     setLanguage(lang)
+  }
+
+  const handleDownload = () => {
+    const link = document.createElement("a")
+    link.href = "/CV_fullstack.pdf" // Změň cestu k souboru
+    link.download = "CV_fullstack.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (
@@ -45,27 +54,28 @@ export default function CV() {
           <div className="mb-6 flex justify-end gap-2">
             <div className="flex gap-2 mr-auto">
               <Button
-                variant={language === "cs" ? "default" : "outline"}
+                variant={language === 'cs' ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => toggleLanguage("cs")}
-                className={language === "cs" ? "bg-purple-600 hover:bg-purple-700" : ""}
+                onClick={() => toggleLanguage('cs')}
+                className={language === 'cs' ? 'bg-purple-600 hover:bg-purple-700' : ''}
               >
                 <span className="mr-1">🇨🇿</span> Česky
               </Button>
               <Button
-                variant={language === "en" ? "default" : "outline"}
+                variant={language === 'en' ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => toggleLanguage("en")}
-                className={language === "en" ? "bg-purple-600 hover:bg-purple-700" : ""}
+                onClick={() => toggleLanguage('en')}
+                className={language === 'en' ? 'bg-purple-600 hover:bg-purple-700' : ''}
               >
                 <span className="mr-1">🇬🇧</span> English
               </Button>
             </div>
             <Button variant="outline" size="icon" onClick={toggleTheme}>
-              {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </Button>
-            <Button variant="outline" size="icon">
-              <Download className="h-4 w-4" />
+            <Button onClick={handleDownload} className="bg-blue-600 hover:bg-blue-700">
+              <Download className="mr-2" />
+              Download CV
             </Button>
           </div>
 
@@ -82,7 +92,9 @@ export default function CV() {
             <div className="space-y-4 flex-1">
               <div>
                 <h1 className="text-3xl font-bold">Taras Ishchuk</h1>
-                <p className="text-lg text-muted-foreground">Frontend Developer | Full Stack Developer</p>
+                <p className="text-lg text-muted-foreground">
+                  Frontend Developer | Full Stack Developer
+                </p>
               </div>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -92,7 +104,10 @@ export default function CV() {
                   <Mail className="h-4 w-4" />
                   ishchuktaras@gmail.com
                 </a>
-                <a href="tel:+420777596216" className="flex items-center gap-2 text-sm hover:text-purple-600">
+                <a
+                  href="tel:+420777596216"
+                  className="flex items-center gap-2 text-sm hover:text-purple-600"
+                >
                   <Phone className="h-4 w-4" />
                   +420777596216
                 </a>
@@ -121,7 +136,10 @@ export default function CV() {
           {/* Main Content Tabs */}
           <Tabs defaultValue="profile" className="space-y-28">
             <TabsList className="grid w-full grid-cols-1 lg:grid-cols-4 bg-purple-100 dark:bg-purple-900">
-              <TabsTrigger value="profile" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">
+              <TabsTrigger
+                value="profile"
+                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white"
+              >
                 {t.tabs.profile}
               </TabsTrigger>
               <TabsTrigger
@@ -136,7 +154,10 @@ export default function CV() {
               >
                 {t.tabs.education}
               </TabsTrigger>
-              <TabsTrigger value="skills" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">
+              <TabsTrigger
+                value="skills"
+                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white"
+              >
                 {t.tabs.skills}
               </TabsTrigger>
             </TabsList>
@@ -170,15 +191,26 @@ export default function CV() {
                             {t.sections.projects.items[0].period}
                           </Badge>
                         </div>
-                        <p className="mt-2 text-muted-foreground">{t.sections.projects.items[0].description}</p>
+                        <p className="mt-2 text-muted-foreground">
+                          {t.sections.projects.items[0].description}
+                        </p>
                         <div className="mt-4 flex flex-wrap gap-2">
-                          <Badge variant="outline" className="border-purple-300 dark:border-purple-700">
+                          <Badge
+                            variant="outline"
+                            className="border-purple-300 dark:border-purple-700"
+                          >
                             React.js
                           </Badge>
-                          <Badge variant="outline" className="border-purple-300 dark:border-purple-700">
+                          <Badge
+                            variant="outline"
+                            className="border-purple-300 dark:border-purple-700"
+                          >
                             Node.js
                           </Badge>
-                          <Badge variant="outline" className="border-purple-300 dark:border-purple-700">
+                          <Badge
+                            variant="outline"
+                            className="border-purple-300 dark:border-purple-700"
+                          >
                             PostgreSQL
                           </Badge>
                         </div>
@@ -224,7 +256,9 @@ export default function CV() {
                         {t.sections.experience.items[0].period}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">{t.sections.experience.items[0].company}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {t.sections.experience.items[0].company}
+                    </p>
                     <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-muted-foreground">
                       {t.sections.experience.items[0].responsibilities.map((resp, index) => (
                         <li key={index}>{resp}</li>
@@ -241,7 +275,9 @@ export default function CV() {
                         {t.sections.experience.items[1].period}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">{t.sections.experience.items[1].company}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {t.sections.experience.items[1].company}
+                    </p>
                     <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-muted-foreground">
                       {t.sections.experience.items[1].responsibilities.map((resp, index) => (
                         <li key={index}>{resp}</li>
@@ -267,15 +303,26 @@ export default function CV() {
                         {t.sections.itEducation.items[0].period}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">{t.sections.itEducation.items[0].degree}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {t.sections.itEducation.items[0].degree}
+                    </p>
                     <div className="mt-4 space-y-2">
-                      <Badge className="mr-2 border-purple-300 dark:border-purple-700" variant="outline">
+                      <Badge
+                        className="mr-2 border-purple-300 dark:border-purple-700"
+                        variant="outline"
+                      >
                         HTML/CSS
                       </Badge>
-                      <Badge className="mr-2 border-purple-300 dark:border-purple-700" variant="outline">
+                      <Badge
+                        className="mr-2 border-purple-300 dark:border-purple-700"
+                        variant="outline"
+                      >
                         JavaScript
                       </Badge>
-                      <Badge className="mr-2 border-purple-300 dark:border-purple-700" variant="outline">
+                      <Badge
+                        className="mr-2 border-purple-300 dark:border-purple-700"
+                        variant="outline"
+                      >
                         React
                       </Badge>
                       <Badge variant="outline" className="border-purple-300 dark:border-purple-700">
@@ -317,10 +364,10 @@ export default function CV() {
                       <h3 className="mb-4 font-medium">Frontend</h3>
                       <div className="space-y-4">
                         {[
-                          { skill: "JavaScript/TypeScript", level: 70 },
-                          { skill: "React.js", level: 70 },
-                          { skill: "Next.js", level: 70 },
-                          { skill: "HTML/CSS", level: 90 },
+                          { skill: 'JavaScript/TypeScript', level: 70 },
+                          { skill: 'React.js', level: 70 },
+                          { skill: 'Next.js', level: 70 },
+                          { skill: 'HTML/CSS', level: 90 },
                         ].map((item) => (
                           <div key={item.skill} className="space-y-2">
                             <div className="flex justify-between text-sm">
@@ -340,13 +387,15 @@ export default function CV() {
 
                   <Card className="border-purple-200 dark:border-purple-800">
                     <CardContent className="p-4">
-                      <h3 className="mb-4 font-medium">Backend & {t.sections.technicalSkills.database}</h3>
+                      <h3 className="mb-4 font-medium">
+                        Backend & {t.sections.technicalSkills.database}
+                      </h3>
                       <div className="space-y-4">
                         {[
-                          { skill: "Node.js", level: 60 },
-                          { skill: "PostgreSQL", level: 60 },
-                          { skill: "Prisma", level: 50 },
-                          { skill: "REST API", level: 50 },
+                          { skill: 'Node.js', level: 60 },
+                          { skill: 'PostgreSQL', level: 60 },
+                          { skill: 'Prisma', level: 50 },
+                          { skill: 'REST API', level: 50 },
                         ].map((item) => (
                           <div key={item.skill} className="space-y-2">
                             <div className="flex justify-between text-sm">
@@ -375,7 +424,10 @@ export default function CV() {
                         <div key={item.lang} className="space-y-2">
                           <div className="flex justify-between text-sm">
                             <span>{item.lang}</span>
-                            <Badge variant="outline" className="border-purple-300 dark:border-purple-700">
+                            <Badge
+                              variant="outline"
+                              className="border-purple-300 dark:border-purple-700"
+                            >
                               {item.level}
                             </Badge>
                           </div>
@@ -416,4 +468,3 @@ export default function CV() {
     </div>
   )
 }
-
