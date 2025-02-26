@@ -38,17 +38,17 @@ export default function CV() {
   }
 
   const handleDownload = () => {
-    const link = document.createElement("a")
-    link.href = "/CV_fullstack.pdf" // Změň cestu k souboru
-    link.download = "CV_fullstack.pdf"
+    const link = document.createElement('a')
+    link.href = '/CV_fullstack.pdf' // Změň cestu k souboru
+    link.download = 'CV_fullstack.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8 lg:p-4">
-      <Card className="mx-auto max-w-12xl bg-background shadow-xl">
+    <div className="min-h-screen  mx-auto w-fullp-4 md:p-8 lg:p-4">
+      <Card className="mx-auto w-full bg-background shadow-xl">
         <CardContent className="p-2 md:p-8 lg:p-4">
           {/* Header with Theme Toggle, Language and Download */}
           <div className="mb-6 flex justify-end gap-2">
@@ -59,7 +59,7 @@ export default function CV() {
                 onClick={() => toggleLanguage('cs')}
                 className={language === 'cs' ? 'bg-purple-600 hover:bg-purple-700' : ''}
               >
-                <span className="mr-1">🇨🇿</span> Česky
+                <span className="mr-1">🇨🇿</span>
               </Button>
               <Button
                 variant={language === 'en' ? 'default' : 'outline'}
@@ -67,13 +67,13 @@ export default function CV() {
                 onClick={() => toggleLanguage('en')}
                 className={language === 'en' ? 'bg-purple-600 hover:bg-purple-700' : ''}
               >
-                <span className="mr-1">🇬🇧</span> English
+                <span className="mr-1">🇬🇧</span>
               </Button>
             </div>
             <Button variant="outline" size="icon" onClick={toggleTheme}>
               {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </Button>
-            <Button onClick={handleDownload} className="bg-blue-600 hover:bg-blue-700">
+            <Button onClick={handleDownload} size="sm" className="bg-purple-600 hover:bg-purple-700">
               <Download className="mr-2" />
               {t.download}
             </Button>
