@@ -103,7 +103,8 @@ export default function CV() {
             </Avatar>
             <div className="space-y-4 flex-1">
               <div>
-                <h1 className="text-3xl font-bold">Taras Ishchuk</h1>
+                <h1 className="text-3xl font-bold">
+                  Taras Ishchuk</h1>
                 <p className="text-lg text-muted-foreground">
                   Frontend Developer | Full Stack Developer
                 </p>
